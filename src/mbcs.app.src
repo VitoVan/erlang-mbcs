@@ -1,0 +1,7 @@
+{application, mbcs,
+ [{description, "MBCS"},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications, [kernel, stdlib]},
+  {mod, {mbcs_app,[]}}
+ ]}.

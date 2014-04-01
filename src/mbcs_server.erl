@@ -45,7 +45,7 @@
 %%--------------------------------------------------------------------------
 
 start() ->
-    DictPath = code:priv_dir(mbcs),
+    DictPath = filename:dirname(code:which(mbcs)) ++ "/../priv",
     {ok, CodecsList}  = file:consult(DictPath ++ "/codecs.conf"),
     {ok, MbcsDictBin} = file:read_file(DictPath ++ "/mbcs.dict"),
     State = #mbcs_server{codecs = dict:from_list(CodecsList),

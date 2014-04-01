@@ -135,17 +135,7 @@ encode(Unicode, Encoding) ->
 -spec encode(unicode(), encoding(), options()) -> binary() | string() | {error, tuple()}.
 
 encode(Unicode, Encoding, Options) ->
-    try
-        gen_server:call(mbcs_server, {encode, Unicode, Encoding, Options})
-    catch
-        throw:_ ->
-            {error, unkonwn_error};
-        exit:_ ->
-            {error, unkonwn_error};
-        error:_ ->
-            {error, unkonwn_error}
-    end.
-
+    gen_server:call(mbcs_server, {encode, Unicode, Encoding, Options}).
 
 %% ---------------------------------------------------------------------
 
@@ -228,16 +218,7 @@ decode(StringOrBinary, Encoding) ->
 -spec decode(string()|binary(), encoding(), options()) -> unicode() | {error, tuple()}.
 
 decode(StringOrBinary, Encoding, Options) ->
-    try
-        gen_server:call(mbcs_server, {decode, StringOrBinary, Encoding, Options})
-    catch
-        throw:_ ->
-            {error, unkonwn_error};
-        exit:_ ->
-            {error, unkonwn_error};
-        error:_ ->
-            {error, unkonwn_error}
-    end.
+    gen_server:call(mbcs_server, {decode, StringOrBinary, Encoding, Options}).
     
 %% ---------------------------------------------------------------------
 
@@ -322,14 +303,5 @@ from_to(StringOrBinary, InputEncoding, OutputEncoding) ->
 -spec from_to(string()|binary(), encoding(), encoding(), options()) -> string() | binary() | {error, tuple()}.
 
 from_to(StringOrBinary, InputEncoding, OutputEncoding, Options) ->
-    try
-        gen_server:call(mbcs_server, {from_to, StringOrBinary, InputEncoding, OutputEncoding, Options})
-    catch
-        throw:_ ->
-            {error, unkonwn_error};
-        exit:_ ->
-            {error, unkonwn_error};
-        error:_ ->
-            {error, unkonwn_error}
-    end.
-    
+    gen_server:call(mbcs_server, {from_to, StringOrBinary, InputEncoding, OutputEncoding, Options}).
+ 
